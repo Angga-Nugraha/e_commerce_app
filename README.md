@@ -1,6 +1,6 @@
 # e_commerce_app
 ## Tentang aplikasi
-Aplikasi ini sepenuhnya di buat menggunakan bahasa pemrograman ![Dart](https://img.shields.io/badge/-Dart-05122A?style=flat&logo=dart&logoColor=007ACC)&nbsp; dengan Framwork ![Flutter](https://img.shields.io/badge/-Flutter-05122A?style=flat&logo=flutter&logoColor=007ACC)&nbsp; , menggunakan API public yaitu [FakeStoreAPI](https://fakestoreapi.com/).
+Aplikasi ini sepenuhnya di buat menggunakan bahasa pemrograman ![Dart](https://img.shields.io/badge/-Dart-05122A?style=flat&logo=dart&logoColor=007ACC)&nbsp; dengan Framwork ![Flutter](https://img.shields.io/badge/-Flutter-05122A?style=flat&logo=flutter&logoColor=007ACC)&nbsp; , menggunakan API public yaitu [FakeStoreAPI](https://github.com/keikaavousi/fake-store-api).
 Semua perubahan data yang dilakukan di aplikasi ini tidak sepenuhnya di simpan kedalam database. Jadi setiap pembuatan akun atau perubahan data pada akun tidak akan benar-benar di simpan dalam database.
 
 Untuk dapat menggunakan aplikasi ini anda harus masuk/login dengan salah satu dari beberapa akun yang sudah di sediakan oleh penyedia API. anda dapat menggunakan username dan password untuk login dari beberapa akun yang ada pada [LINK](https://fakestoreapi.com/users) berikut. 
@@ -28,3 +28,8 @@ Untuk dapat menggunakan aplikasi ini anda harus masuk/login dengan salah satu da
 
 ## Design 
 Untuk design aplikasi, saya terinspirasi dari design dari [Ferrin Raja](https://www.figma.com/@ferrin) pada situs [Figma Comunnity](https://www.figma.com/).
+
+jika anda tertarik untuk mencoba aplikasi ini, anda dapat mengunduh versi profile nya pada [LINK](https://drive.google.com/file/d/1mOCsSqJhPOx51kEnirSxWu3jQaim5J6l/view?usp=sharing) berikut.
+
+## Beberapa tampilan utama pada aplikasi :
+
