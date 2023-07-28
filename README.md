@@ -32,4 +32,12 @@ Untuk design aplikasi, saya terinspirasi dari design dari [Ferrin Raja](https://
 jika anda tertarik untuk mencoba aplikasi ini, anda dapat mengunduh versi profile nya pada [LINK](https://drive.google.com/file/d/13zB0VfvbTD5QJyHJ95YF2HbRJJ6aejT7/view?usp=sharing) berikut.
 
 ## Beberapa tampilan utama pada aplikasi :
-
+![WhatsApp Image 2023-07-29 at 00 31 26](https://github.com/Angga-Nugraha/e_commerce_app/assets/76716099/93ccc910-9e13-4b74-8e9d-eb66c1e39a46)
+![WhatsApp Image 2023-07-29 at 00 31 25](https://github.com/Angga-Nugraha/e_commerce_app/assets/76716099/f5a4fc61-5e69-4d35-8251-65036380c17f)
+![WhatsApp Image 2023-07-29 at 00 31 24](https://github.com/Angga-Nugraha/e_commerce_app/assets/76716099/53d2c781-79e6-4caa-b28b-c1d75170eafd)
+![WhatsApp Image 2023-07-29 at 00 31 22](https://github.com/Angga-Nugraha/e_commerce_app/assets/76716099/628a02eb-f06d-4b9c-98b9-f0d9e141cf31)
+![WhatsApp Image 2023-07-29 at 00 31 23](https://github.com/Angga-Nugraha/e_commerce_app/assets/76716099/062dddaa-daf7-440a-955b-0b1f90358d62)
+![WhatsApp Image 2023-07-29 at 00 31 21](https://github.com/Angga-Nugraha/e_commerce_app/assets/76716099/5f9c0b5c-ef14-472d-b8b2-80cdefc4a981)
+![WhatsApp Image 2023-07-29 at 00 31 20](https://github.com/Angga-Nugraha/e_commerce_app/assets/76716099/9ae270dc-fcc6-450a-8759-93dec0543c69)
+![WhatsApp Image 2023-07-29 at 00 31 19](https://github.com/Angga-Nugraha/e_commerce_app/assets/76716099/f2b403f8-07c6-462b-b703-657229a0422f)
+![WhatsApp Image 2023-07-29 at 00 31 18](https://github.com/Angga-Nugraha/e_commerce_app/assets/76716099/177f4917-0dea-4d40-ade2-fc10c8f98fa1)
