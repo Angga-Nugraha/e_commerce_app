@@ -29,7 +29,7 @@ Untuk dapat menggunakan aplikasi ini anda harus masuk/login dengan salah satu da
 ## Design 
 Untuk design aplikasi, saya terinspirasi dari design dari [Ferrin Raja](https://www.figma.com/@ferrin) pada situs [Figma Comunnity](https://www.figma.com/).
 
-jika anda tertarik untuk mencoba aplikasi ini, anda dapat mengunduh versi profile nya pada [LINK](https://drive.google.com/file/d/1mOCsSqJhPOx51kEnirSxWu3jQaim5J6l/view?usp=sharing) berikut.
+jika anda tertarik untuk mencoba aplikasi ini, anda dapat mengunduh versi profile nya pada [LINK](https://drive.google.com/file/d/13zB0VfvbTD5QJyHJ95YF2HbRJJ6aejT7/view?usp=sharing) berikut.
 
 ## Beberapa tampilan utama pada aplikasi :
 
