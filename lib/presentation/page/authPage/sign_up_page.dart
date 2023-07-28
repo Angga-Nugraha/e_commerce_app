@@ -1,4 +1,3 @@
-import 'package:e_commerce_app/presentation/widgets/permission.dart';
 import "package:e_commerce_app/data/common/routes.dart";
 import "package:e_commerce_app/domain/entities/adress.dart";
 import "package:e_commerce_app/domain/entities/geolocation.dart";
@@ -215,7 +214,6 @@ class _LoginPageState extends State<SignUpPage> {
                           context: context,
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
-                              permission.handleLocationPermission(context);
                               context
                                   .read<LocationBloc>()
                                   .add(const GetLocationEvent());

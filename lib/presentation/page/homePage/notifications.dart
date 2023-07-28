@@ -16,7 +16,7 @@ class NotificationsPage extends StatelessWidget {
             color: Colors.grey,
           ),
           Text(
-            "No Notifications",
+            "This features not ready to use",
             style: kSubTitle,
             textAlign: TextAlign.center,
           ),

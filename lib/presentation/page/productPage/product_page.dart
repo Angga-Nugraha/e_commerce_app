@@ -39,7 +39,10 @@ class _ProductPageState extends State<ProductPage> {
             return BlocBuilder<ProductBloc, ProductState>(
               builder: (context, state) {
                 if (state is ProductLoading) {
-                  return gridViewShimmer(isVertical: true);
+                  return Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: gridViewShimmer(isVertical: true),
+                  );
                 }
                 if (state is ProductHasData) {
                   return GridView.builder(
@@ -62,7 +65,10 @@ class _ProductPageState extends State<ProductPage> {
             return BlocBuilder<ProductBloc, ProductState>(
               builder: (context, state) {
                 if (state is ProductLoading) {
-                  return gridViewShimmer();
+                  return Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: gridViewShimmer(isVertical: true),
+                  );
                 }
                 if (state is ProductHasData) {
                   return GridView.builder(

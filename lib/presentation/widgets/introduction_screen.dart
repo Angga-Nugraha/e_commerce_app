@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/data/common/style.dart';
+import 'package:e_commerce_app/presentation/widgets/permission.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
@@ -32,6 +33,12 @@ class _IntroductionPageState extends State<IntroductionPage> {
             ),
           ),
         ));
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    permission.handleLocationPermission(context);
   }
 
   @override

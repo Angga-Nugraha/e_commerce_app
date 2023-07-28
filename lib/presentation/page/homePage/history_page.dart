@@ -7,7 +7,6 @@ import 'package:e_commerce_app/presentation/bloc/product_bloc/product_bloc.dart'
 import 'package:e_commerce_app/presentation/components/components_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 
 class HistoryPage extends StatefulWidget {
   const HistoryPage({super.key});
@@ -17,22 +16,39 @@ class HistoryPage extends StatefulWidget {
 }
 
 class _HistoryPageState extends State<HistoryPage> {
-  @override
-  void initState() {
-    // final id = userId;
-    super.initState();
-    Future.microtask(() => [
-          BlocProvider.of<MyOrderBloc>(context, listen: false)
-              .add(FetchAllOrderCart(userId: userId)),
-          BlocProvider.of<ProductBloc>(context, listen: false)
-              .add(FetchAllProduct()),
-        ]);
-  }
-
   List<Cart> listCart = [];
   List<Product> listProduct = [];
   List<Product> allProduct = [];
-  List<Product> product = [];
+  List<Product> productCart = [];
+  String date = '';
+
+  void getProductCart(List<Product> product) {
+    for (var element in allProduct) {
+      for (var value in product) {
+        if (element.id == value.id) {
+          productCart.add(element);
+        }
+      }
+    }
+    for (var i = 0; i < productCart.length; i++) {
+      for (var value in product) {
+        if (productCart.elementAt(i).id == value.id) {
+          productCart.elementAt(i).quantity = value.quantity;
+        }
+      }
+    }
+  }
+
+  @override
+  void initState() {
+    Future.microtask(() => [
+          BlocProvider.of<ProductBloc>(context, listen: false)
+              .add(FetchAllProduct()),
+          BlocProvider.of<MyOrderBloc>(context, listen: false)
+              .add(FetchAllOrderCart(userId: userId)),
+        ]);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,80 +62,70 @@ class _HistoryPageState extends State<HistoryPage> {
               'My Order',
               style: kTitle,
             ),
-            BlocBuilder<MyOrderBloc, MyOrderState>(
+            BlocBuilder<ProductBloc, ProductState>(
               builder: (context, state) {
-                if (state is MyOrderLoading) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
+                if (state is ProductHasData) {
+                  allProduct = state.listProduct;
                 }
-                if (state is MyOrderHasData) {
-                  listCart = state.result;
-                  return BlocBuilder<ProductBloc, ProductState>(
-                    builder: (context, state) {
-                      if (state is ProductHasData) {
-                        allProduct = state.listProduct;
-                        for (var i = 0; i < listProduct.length; i++) {
-                          product.add(allProduct
-                              .map((e) => e)
-                              .where(
-                                  (element) => element.id == listProduct[i].id)
-                              .first);
-                        }
-                        for (var i = 0; i < product.length; i++) {
-                          if (product[i].id == listProduct[i].id) {
-                            product[i].quantity = listProduct[i].quantity;
-                          }
-                        }
-                      }
+                return BlocBuilder<MyOrderBloc, MyOrderState>(
+                  builder: (context, state) {
+                    if (state is MyOrderLoading) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                    if (state is MyOrderHasError) {
+                      return Text(state.message);
+                    }
+                    if (state is MyOrderHasData) {
+                      listCart = state.result;
+                      listProduct = listCart.map((e) => e.products).first;
+                      getProductCart(listProduct);
                       return ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: listCart.length,
-                          itemBuilder: (context, index) {
-                            final date = DateFormat("yyyy-MM-dd")
-                                .format(DateTime.parse(listCart[index].date));
-                            listProduct = listCart[index].products;
-
-                            return Card(
-                              child: Column(
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Card(
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(30)),
-                                        color: Colors.lightGreen,
-                                        child: const Padding(
-                                          padding: EdgeInsets.all(2.0),
-                                          child: Text('Completed'),
-                                        ),
+                        shrinkWrap: true,
+                        itemCount: listCart.length,
+                        itemBuilder: (context, index) {
+                          return Card(
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Card(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(30)),
+                                      color: Colors.lightGreen,
+                                      child: const Padding(
+                                        padding: EdgeInsets.all(2.0),
+                                        child: Text('Completed'),
                                       ),
-                                      Text(date),
-                                    ],
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: ListView.builder(
-                                      shrinkWrap: true,
-                                      itemCount: product.length,
-                                      itemBuilder: (context, index) {
-                                        return myListTileProduct(context,
-                                            product: product[index],
-                                            quantity: true);
-                                      },
                                     ),
+                                    Text(date),
+                                  ],
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: ListView.builder(
+                                    shrinkWrap: true,
+                                    itemCount: listCart[index].products.length,
+                                    itemBuilder: (context, index) {
+                                      return myListTileProduct(context,
+                                          product: productCart.elementAt(index),
+                                          quantity: true);
+                                    },
                                   ),
-                                ],
-                              ),
-                            );
-                          });
-                    },
-                  );
-                }
-                return Container();
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      );
+                    }
+                    return Container();
+                  },
+                );
               },
             ),
           ],

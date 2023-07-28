@@ -49,7 +49,6 @@ dependencies:
   salomon_bottom_bar: ^3.3.2
   shared_preferences: ^2.1.2
   shimmer: ^3.0.0
-  sqflite: ^2.2.8+4
   sqflite_sqlcipher: ^2.1.1+1
 
 dev_dependencies:
