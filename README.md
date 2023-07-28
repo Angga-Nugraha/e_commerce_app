@@ -32,8 +32,7 @@ Untuk design aplikasi, saya terinspirasi dari design dari [Ferrin Raja](https://
 jika anda tertarik untuk mencoba aplikasi ini, anda dapat mengunduh versi profile nya pada [LINK](https://drive.google.com/file/d/13zB0VfvbTD5QJyHJ95YF2HbRJJ6aejT7/view?usp=sharing) berikut.
 
 ## Beberapa tampilan utama pada aplikasi :
-<img src="https://github.com/Angga-Nugraha/e_commerce_app/assets/76716099/93ccc910-9e13-4b74-8e9d-eb66c1e39a46" width="100" height="100">
-![WhatsApp Image 2023-07-29 at 00 31 26]()
+<img src="https://github.com/Angga-Nugraha/e_commerce_app/assets/76716099/93ccc910-9e13-4b74-8e9d-eb66c1e39a46" width="400" height="800">
 ![WhatsApp Image 2023-07-29 at 00 31 25](https://github.com/Angga-Nugraha/e_commerce_app/assets/76716099/f5a4fc61-5e69-4d35-8251-65036380c17f)
 ![WhatsApp Image 2023-07-29 at 00 31 24](https://github.com/Angga-Nugraha/e_commerce_app/assets/76716099/53d2c781-79e6-4caa-b28b-c1d75170eafd)
 ![WhatsApp Image 2023-07-29 at 00 31 22](https://github.com/Angga-Nugraha/e_commerce_app/assets/76716099/628a02eb-f06d-4b9c-98b9-f0d9e141cf31)
