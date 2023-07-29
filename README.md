@@ -33,11 +33,19 @@ jika anda tertarik untuk mencoba aplikasi ini, anda dapat mengunduh versi profil
 
 ## Beberapa tampilan utama pada aplikasi :
 <img src="https://github.com/Angga-Nugraha/e_commerce_app/assets/76716099/93ccc910-9e13-4b74-8e9d-eb66c1e39a46" width="250" height="500">
+
 <img src="https://github.com/Angga-Nugraha/e_commerce_app/assets/76716099/f5a4fc61-5e69-4d35-8251-65036380c17f" width="250" height="500">
+
 <img src="https://github.com/Angga-Nugraha/e_commerce_app/assets/76716099/53d2c781-79e6-4caa-b28b-c1d75170eafd" width="250" height="500">
+
 <img src="https://github.com/Angga-Nugraha/e_commerce_app/assets/76716099/628a02eb-f06d-4b9c-98b9-f0d9e141cf31" width="250" height="500">
+
 <img src="https://github.com/Angga-Nugraha/e_commerce_app/assets/76716099/062dddaa-daf7-440a-955b-0b1f90358d62" width="250" height="500">
+
 <img src="https://github.com/Angga-Nugraha/e_commerce_app/assets/76716099/5f9c0b5c-ef14-472d-b8b2-80cdefc4a981" width="250" height="500">
+
 <img src="https://github.com/Angga-Nugraha/e_commerce_app/assets/76716099/9ae270dc-fcc6-450a-8759-93dec0543c69" width="250" height="500">
+
 <img src="https://github.com/Angga-Nugraha/e_commerce_app/assets/76716099/f2b403f8-07c6-462b-b703-657229a0422f" width="250" height="500">
+
 <img src="https://github.com/Angga-Nugraha/e_commerce_app/assets/76716099/177f4917-0dea-4d40-ade2-fc10c8f98fa1" width="250" height="500">
