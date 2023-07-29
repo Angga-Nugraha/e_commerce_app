@@ -31,8 +31,8 @@ Untuk design aplikasi, saya terinspirasi dari design dari [Ferrin Raja](https://
 
 jika anda tertarik untuk mencoba aplikasi ini, anda dapat mengunduh versi profile nya pada [LINK](https://drive.google.com/file/d/13zB0VfvbTD5QJyHJ95YF2HbRJJ6aejT7/view?usp=sharing) berikut.
 
-## Beberapa tampilan utama pada aplikasi :
-<img src="https://github.com/Angga-Nugraha/e_commerce_app/assets/76716099/93ccc910-9e13-4b74-8e9d-eb66c1e39a46" width="250" height="500">
+## Beberapa tampilan utama pada aplikasii
+<img src="./assets/76716099/93ccc910-9e13-4b74-8e9d-eb66c1e39a46" width="250" height="500">
 
 <img src="https://github.com/Angga-Nugraha/e_commerce_app/assets/76716099/f5a4fc61-5e69-4d35-8251-65036380c17f" width="250" height="500">
 
