@@ -64,68 +64,76 @@ class _HistoryPageState extends State<HistoryPage> {
             ),
             BlocBuilder<ProductBloc, ProductState>(
               builder: (context, state) {
-                if (state is ProductHasData) {
-                  allProduct = state.listProduct;
-                }
-                return BlocBuilder<MyOrderBloc, MyOrderState>(
-                  builder: (context, state) {
-                    if (state is MyOrderLoading) {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    }
-                    if (state is MyOrderHasError) {
-                      return Text(state.message);
-                    }
-                    if (state is MyOrderHasData) {
-                      listCart = state.result;
-                      listProduct = listCart.map((e) => e.products).first;
-                      getProductCart(listProduct);
-                      return ListView.builder(
+                if (state is ProductLoading) {
+                  return Center(
+                    child: ListView.builder(
                         shrinkWrap: true,
-                        itemCount: listCart.length,
+                        itemCount: 4,
                         itemBuilder: (context, index) {
-                          return Card(
-                            child: Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Card(
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(30)),
-                                      color: Colors.lightGreen,
-                                      child: const Padding(
-                                        padding: EdgeInsets.all(2.0),
-                                        child: Text('Completed'),
+                          return listTileShimmer();
+                        }),
+                  );
+                } else if (state is ProductHasData) {
+                  allProduct = state.listProduct;
+                  return BlocBuilder<MyOrderBloc, MyOrderState>(
+                    builder: (context, state) {
+                      if (state is MyOrderHasError) {
+                        return Text(state.message);
+                      } else if (state is MyOrderHasData) {
+                        listCart = state.result;
+                        listProduct = listCart.map((e) => e.products).first;
+                        getProductCart(listProduct);
+                        return ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: listCart.length,
+                          itemBuilder: (context, index) {
+                            return Card(
+                              child: Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Card(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(30)),
+                                        color: Colors.lightGreen,
+                                        child: const Padding(
+                                          padding: EdgeInsets.all(2.0),
+                                          child: Text('Completed'),
+                                        ),
                                       ),
-                                    ),
-                                    Text(date),
-                                  ],
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: ListView.builder(
-                                    shrinkWrap: true,
-                                    itemCount: listCart[index].products.length,
-                                    itemBuilder: (context, index) {
-                                      return myListTileProduct(context,
-                                          product: productCart.elementAt(index),
-                                          quantity: true);
-                                    },
+                                      Text(date),
+                                    ],
                                   ),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                      );
-                    }
-                    return Container();
-                  },
-                );
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: ListView.builder(
+                                      shrinkWrap: true,
+                                      itemCount:
+                                          listCart[index].products.length,
+                                      itemBuilder: (context, index) {
+                                        return myListTileProduct(context,
+                                            product:
+                                                productCart.elementAt(index),
+                                            quantity: true);
+                                      },
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        );
+                      } else {
+                        return Container();
+                      }
+                    },
+                  );
+                } else {
+                  return const SizedBox();
+                }
               },
             ),
           ],
