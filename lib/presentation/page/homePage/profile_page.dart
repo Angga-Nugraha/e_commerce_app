@@ -14,7 +14,7 @@ class ProfilPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        physics: const NeverScrollableScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.all(20.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -115,33 +115,31 @@ class ProfilPage extends StatelessWidget {
                         onPressed2: () => Navigator.pop(context),
                       ),
                     ),
+                    _buildProfileMenuTile(
+                      title: "Logout",
+                      icon: Icons.logout_outlined,
+                      onTap: () => myDialog(
+                        title: "Logout",
+                        content: "Yakin keluar?",
+                        context: context,
+                        onPressed1: () {
+                          preferencesHelper.deleteToken();
+                          preferencesHelper.deleteUserId();
+                          Navigator.pushNamedAndRemoveUntil(
+                            context,
+                            firstPageRoute,
+                            (route) => false,
+                          );
+                        },
+                        onPressed2: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ),
                   ],
                 ),
               ),
             ),
-            const SizedBox(height: 40),
-            myBotton(
-                onPressed: () {
-                  myDialog(
-                    title: "Logout",
-                    content: "Yakin keluar?",
-                    context: context,
-                    onPressed1: () {
-                      preferencesHelper.deleteToken();
-                      preferencesHelper.deleteUserId();
-                      Navigator.pushNamedAndRemoveUntil(
-                        context,
-                        firstPageRoute,
-                        (route) => false,
-                      );
-                    },
-                    onPressed2: () {
-                      Navigator.pop(context);
-                    },
-                  );
-                },
-                label: "Logout",
-                context: context),
           ],
         ),
       ),

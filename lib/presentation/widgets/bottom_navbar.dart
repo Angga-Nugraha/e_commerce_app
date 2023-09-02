@@ -28,7 +28,7 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
     return [
       const HomePage(),
       const NotificationsPage(),
-      const HistoryPage(),
+      HistoryPage(id: widget.id),
       const ProfilPage(),
     ];
   }

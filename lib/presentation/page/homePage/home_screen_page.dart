@@ -46,164 +46,168 @@ class _HomePageState extends State<HomePage> {
             );
           }
         },
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Welcome,",
-                style: kTitle,
-              ),
-              Text(
-                "To our Fashions App",
-                style: kLabel.copyWith(
-                  color: Colors.grey,
+        child: RefreshIndicator(
+          onRefresh: () async =>
+              context.read<ProductBloc>().add(FetchAllProduct()),
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 20.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Welcome,",
+                  style: kTitle,
                 ),
-              ),
-              const SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Flexible(
-                    flex: 5,
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(30),
-                      onTap: () =>
-                          Navigator.pushNamed(context, searchPageRoutes),
-                      child: Container(
-                        height: 45,
-                        padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: Colors.grey[300]),
-                        child: Center(
-                          child: TextField(
-                            enabled: false,
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: "Search",
-                              hintStyle: kSubTitle,
-                              prefixIcon: const Icon(Icons.search),
+                Text(
+                  "To our Fashions App",
+                  style: kLabel.copyWith(
+                    color: Colors.grey,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Flexible(
+                      flex: 5,
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(30),
+                        onTap: () =>
+                            Navigator.pushNamed(context, searchPageRoutes),
+                        child: Container(
+                          height: 45,
+                          padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: Colors.grey[300]),
+                          child: Center(
+                            child: TextField(
+                              enabled: false,
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: "Search",
+                                hintStyle: kSubTitle,
+                                prefixIcon: const Icon(Icons.search),
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  const Flexible(
-                    child: CircleAvatar(
-                      backgroundColor: Colors.black,
-                      child: Icon(
-                        Icons.dashboard_outlined,
-                        color: Colors.white,
+                    const Flexible(
+                      child: CircleAvatar(
+                        backgroundColor: Colors.black,
+                        child: Icon(
+                          Icons.dashboard_outlined,
+                          color: Colors.white,
+                        ),
                       ),
+                    )
+                  ],
+                ),
+                const SizedBox(height: 10),
+                BlocBuilder<ProductBloc, ProductState>(
+                  builder: (context, state) {
+                    if (state is ProductLoading) {
+                      return listTileShimmer();
+                    }
+                    if (state is ProductHasData) {
+                      var product = setRecomendation(state.topRatedProduct);
+                      return myListTileProduct(context, product: product);
+                    }
+                    return Container();
+                  },
+                ),
+                const Divider(
+                  color: Colors.black,
+                  thickness: 0.1,
+                  height: 20,
+                ),
+                Text(
+                  "Categories",
+                  style: kTitle.copyWith(fontSize: 22),
+                ),
+                const SizedBox(height: 10),
+                BlocBuilder<ProductBloc, ProductState>(
+                  builder: (context, state) {
+                    if (state is ProductLoading) {
+                      return listShimmer();
+                    }
+                    if (state is ProductHasData) {
+                      _categories = state.allCategory.toSet();
+                    }
+                    return _listCategories(_categories);
+                  },
+                ),
+                const Divider(
+                  color: Colors.black,
+                  thickness: 0.1,
+                  height: 20,
+                ),
+                ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  leading: Text(
+                    "Top Rated",
+                    style: kTitle.copyWith(fontSize: 22),
+                  ),
+                  trailing: TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, productPageRoute,
+                          arguments: "Top Rated");
+                    },
+                    child: Text(
+                      'View all',
+                      style: kLabel,
                     ),
-                  )
-                ],
-              ),
-              const SizedBox(height: 10),
-              BlocBuilder<ProductBloc, ProductState>(
-                builder: (context, state) {
-                  if (state is ProductLoading) {
-                    return listTileShimmer();
-                  }
-                  if (state is ProductHasData) {
-                    var product = setRecomendation(state.topRatedProduct);
-                    return myListTileProduct(context, product: product);
-                  }
-                  return Container();
-                },
-              ),
-              const Divider(
-                color: Colors.black,
-                thickness: 0.1,
-                height: 20,
-              ),
-              Text(
-                "Categories",
-                style: kTitle.copyWith(fontSize: 22),
-              ),
-              const SizedBox(height: 10),
-              BlocBuilder<ProductBloc, ProductState>(
-                builder: (context, state) {
-                  if (state is ProductLoading) {
-                    return listShimmer();
-                  }
-                  if (state is ProductHasData) {
-                    _categories = state.allCategory.toSet();
-                  }
-                  return _listCategories(_categories);
-                },
-              ),
-              const Divider(
-                color: Colors.black,
-                thickness: 0.1,
-                height: 20,
-              ),
-              ListTile(
-                contentPadding: EdgeInsets.zero,
-                leading: Text(
-                  "Top Rated",
-                  style: kTitle.copyWith(fontSize: 22),
-                ),
-                trailing: TextButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, productPageRoute,
-                        arguments: "Top Rated");
-                  },
-                  child: Text(
-                    'View all',
-                    style: kLabel,
                   ),
                 ),
-              ),
-              BlocBuilder<ProductBloc, ProductState>(
-                builder: (context, state) {
-                  if (state is ProductLoading) {
-                    return gridViewShimmer();
-                  }
-                  if (state is ProductHasData) {
-                    topRated = state.topRatedProduct;
-                  }
-                  return _buildListProduct(product: topRated);
-                },
-              ),
-              const Divider(
-                color: Colors.black,
-                thickness: 0.1,
-                height: 20,
-              ),
-              ListTile(
-                contentPadding: EdgeInsets.zero,
-                leading: Text(
-                  "All Product",
-                  style: kTitle.copyWith(fontSize: 22),
-                ),
-                trailing: TextButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, productPageRoute,
-                        arguments: "All Product");
+                BlocBuilder<ProductBloc, ProductState>(
+                  builder: (context, state) {
+                    if (state is ProductLoading) {
+                      return gridViewShimmer();
+                    }
+                    if (state is ProductHasData) {
+                      topRated = state.topRatedProduct;
+                    }
+                    return _buildListProduct(product: topRated);
                   },
-                  child: Text(
-                    'View all',
-                    style: kLabel,
+                ),
+                const Divider(
+                  color: Colors.black,
+                  thickness: 0.1,
+                  height: 20,
+                ),
+                ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  leading: Text(
+                    "All Product",
+                    style: kTitle.copyWith(fontSize: 22),
+                  ),
+                  trailing: TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, productPageRoute,
+                          arguments: "All Product");
+                    },
+                    child: Text(
+                      'View all',
+                      style: kLabel,
+                    ),
                   ),
                 ),
-              ),
-              BlocBuilder<ProductBloc, ProductState>(
-                builder: (context, state) {
-                  if (state is ProductLoading) {
-                    return gridViewShimmer();
-                  }
-                  if (state is ProductHasData) {
-                    allProduct = state.listProduct;
-                  }
-                  return _buildListProduct(product: allProduct);
-                },
-              ),
-            ],
+                BlocBuilder<ProductBloc, ProductState>(
+                  builder: (context, state) {
+                    if (state is ProductLoading) {
+                      return gridViewShimmer();
+                    }
+                    if (state is ProductHasData) {
+                      allProduct = state.listProduct;
+                    }
+                    return _buildListProduct(product: allProduct);
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),

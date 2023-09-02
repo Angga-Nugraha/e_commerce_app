@@ -42,6 +42,7 @@ class _UserInfoState extends State<UserInfo> {
     return Scaffold(
       appBar: myAppBar(
         context,
+        title: "Personal detail",
         trailingIcon: Icons.edit_document,
         trailingOnTap: () {
           myDialog(
