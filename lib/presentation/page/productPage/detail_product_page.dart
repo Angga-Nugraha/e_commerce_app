@@ -109,7 +109,7 @@ class _DetailProductPageState extends State<DetailProductPage> {
           builder: (context, scrollController) {
             return Container(
               decoration: BoxDecoration(
-                color: Colors.grey.shade300.withOpacity(0.8),
+                color: Colors.grey.shade300,
                 borderRadius:
                     const BorderRadius.vertical(top: Radius.circular(30)),
               ),

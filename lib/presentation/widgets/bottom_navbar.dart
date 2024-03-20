@@ -9,6 +9,7 @@ import 'package:e_commerce_app/presentation/page/homePage/notifications.dart';
 import 'package:e_commerce_app/presentation/page/homePage/profile_page.dart';
 import 'package:e_commerce_app/presentation/widgets/drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
@@ -94,8 +95,14 @@ class _NavigationBarPageState extends State<NavigationBarPage> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () => _onWillPop(),
+    return PopScope(
+    canPop: false,
+    onPopInvoked: (_) async{
+      if (await _onWillPop()) {
+        SystemNavigator.pop();
+      }
+    },
+      // onWillPop: () => _onWillPop(),
       child: Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(

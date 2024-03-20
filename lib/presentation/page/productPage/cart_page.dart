@@ -147,7 +147,7 @@ class _CartPageState extends State<CartPage> {
       itemCount: product.length,
       itemBuilder: (context, index) {
         return Dismissible(
-          direction: DismissDirection.endToStart,
+          direction: DismissDirection.horizontal,
           background: Container(
             decoration: BoxDecoration(
                 color: Colors.grey.shade300,
